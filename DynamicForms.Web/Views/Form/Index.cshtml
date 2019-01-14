@@ -1,0 +1,13 @@
+﻿@model FormConfiguration
+
+@{
+  ViewBag.Title = $"Form {Model.Group.ID}, Name: {Model.Group.Name}, Alias: {Model.Group.Alias}, Version: {Model.VersionID}";
+}
+
+<div class="row">
+  <div class="col-md-12">
+    @Html.EditorFor(m => m.Experiences)
+  </div>
+</div>
+@section Scripts {
+}

@@ -1,0 +1,52 @@
+﻿@model Step
+@{
+  var configuration = ApplicationFormContext.Configuration;
+}
+<div class="row header">
+  <div class="col-xs-4 logo">
+    <img src="@Url.Content($"~/Content/Logos/{configuration.Settings.Brand.Theme}.png")" />
+  </div>
+  <div class="col-xs-8 text-right">
+    @if (configuration.Settings.Contact.PhoneNumber != null)
+    {
+      <a class="btn btn-default btn-lg" href="tel:@configuration.Settings.Contact.PhoneNumber.Value">@configuration.Settings.Contact.PhoneNumber.Label</a>
+    }
+    @if (configuration.Settings.Contact.Email != null)
+    {
+      <a class="btn btn-default btn-lg" href="mailto:@configuration.Settings.Contact.Email.Value">@configuration.Settings.Contact.Email.Label</a>
+    }
+    @if (configuration.Settings.Contact.Chat != null)
+    {
+      <a class="btn btn-default btn-lg" href="@configuration.Settings.Contact.Chat.Value">@configuration.Settings.Contact.Chat.Label</a>
+    }
+  </div>
+</div>
+<h2>Step @Model.Number: @Model.Title</h2>
+<div class="row">
+  <div class="col-md-8">
+    @for (var i = 0; i < Model.Sections.Count; i++)
+    {
+      @Html.EditorFor(m => m.Sections[i])
+    }
+    @Html.Action("Buttons", "Parts", Model)
+  </div>
+  <div class="col-md-4">
+    <div class="bs-callout">
+      <h4>Current configuration</h4>
+      <p>
+        <strong>ID:</strong> @configuration.Group.ID <br />
+        <strong>Version ID:</strong> @configuration.VersionID<br />
+        <strong>Name:</strong> @configuration.Group.Name<br />
+        <strong>Theme:</strong> @configuration.Settings.Brand.Theme<br />
+        <strong>API: </strong> <a target="_blank" href="@($"{ApplicationSettings.ConfigurationApiUrl}Form/{configuration.Group.ID}/{configuration.VersionID}")">View configuration</a><br />
+        <strong>API: </strong> <a target="_blank" href="@($"{ApplicationSettings.DataApiUrl}Application/{this.ApplicationFormContext.Application.ID}")">View data</a>
+      </p>
+    </div>
+    @foreach (var block in ApplicationFormContext.Configuration.Experiences[0].Blocks)
+    {
+      <div class="block-type-@block.Type.ToLowerInvariant()">
+        @Html.DisplayFor(m => block)
+      </div>
+    }
+  </div>
+</div>

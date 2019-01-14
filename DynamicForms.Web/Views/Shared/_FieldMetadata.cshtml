@@ -1,0 +1,8 @@
+﻿@model FieldBase
+
+@if (!string.IsNullOrEmpty(Model.Alias))
+{
+  <p class="help-block">Alias: @Model.Alias</p>
+}
+@Html.Partial("_Annotations")
+@Html.Partial("_Validators")

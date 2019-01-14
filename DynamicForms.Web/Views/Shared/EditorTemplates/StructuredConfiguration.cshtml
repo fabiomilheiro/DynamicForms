@@ -1,0 +1,6 @@
+﻿@model StructuredConfiguration
+
+@for (var i = 0; i < Model.Navigation.Pages.Count; i++)
+{
+    @Html.EditorFor(m => m.Navigation.Pages[i])
+}

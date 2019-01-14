@@ -1,0 +1,7 @@
+﻿@model TaxResidencyGroupField
+
+@Html.RenderFieldEditorFor(Model, Model.IsOnlyOneTaxResidency, m => m.IsOnlyOneTaxResidency)
+
+@Html.EditorFor(m => m.TaxResidency1)
+@Html.EditorFor(m => m.TaxResidency2)
+@Html.EditorFor(m => m.TaxResidency3)

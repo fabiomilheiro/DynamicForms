@@ -1,0 +1,14 @@
+﻿@model ProductsField
+
+<p>@Model.Label</p>
+<div class="btn-group btn-group-lg" data-toggle="buttons">
+  @foreach (var item in Model.AvailableValues)
+  {
+    <label class="btn btn-primary @(Model.Value.Contains(item.Value) ? "active" : null)">
+      <input type="checkbox" name="@Html.NameFor(m => m.Value)" value="@item.Value" @(Model.Value.Contains(item.Value) ? "checked" : null) /> @item.Text
+    </label>
+  }
+</div>
+<div class="clearfix"></div>
+@Html.ValidationMessageFor(m => m.Value)
+@Html.RenderMetadata(Model)

@@ -1,0 +1,12 @@
+﻿@model FieldBase
+
+@if (Model.Annotations.Any())
+{
+  <p class="help-block">
+    Annotations: @Html.Raw(string.Join(", ", Model.Annotations.Select(CreateValidatorSpanWithTooltip)))
+  </p>
+}
+
+@helper CreateValidatorSpanWithTooltip(FieldAnnotationBase annotation)
+{
+  <a href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@annotation.ToString()">@annotation.Type</a>}

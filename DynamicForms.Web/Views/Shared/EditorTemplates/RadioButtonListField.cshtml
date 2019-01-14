@@ -1,0 +1,29 @@
+﻿@model RadioButtonListField
+
+<p>@Model.Label</p>
+<div class="form-group">
+  @foreach (var item in Model.AvailableValues)
+  {
+      <label data-toggle="tooltip" data-placement="bottom" title="@GetItemSubtextOnSelectionTooltip(item)">
+          @Html.RadioButtonFor(m => m.Value, item.Value) @item.Text
+      </label>
+  }
+  <div class="clearfix">
+    @Html.ValidationMessageFor(m => m.Value)
+  </div>
+</div>
+@Html.RenderMetadata(Model)
+
+@functions {
+
+    private static string GetItemSubtextOnSelectionTooltip(AvailableValue item)
+    {
+      if (!string.IsNullOrEmpty(item.SubtextOnSelection))
+      {
+        return $"Subtext on selection: {item.SubtextOnSelection}";
+      }
+
+      return null;
+    }
+
+}

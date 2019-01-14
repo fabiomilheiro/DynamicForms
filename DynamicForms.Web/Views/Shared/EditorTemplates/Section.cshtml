@@ -1,0 +1,27 @@
+﻿@model Section
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="bs-callout bs-callout-section">
+      <h3>@Model.Title</h3>
+      @foreach (var t in Model.Body)
+      {
+          <p>@Html.Raw(t)</p>
+      }
+
+      @if (Model.Fields.Any())
+      {
+        for (var i = 0; i < Model.Fields.Count; i++)
+        {
+              @Html.HiddenFor(m => m.Fields[i].Type)
+              @Html.RenderFieldEditorFor(Model, Model.Fields[i], m => m.Fields[i])
+        }
+      }
+      else
+      {
+          @Html.HiddenFor(m => m.Title)
+          <p>(There are no fields in this section.)</p>
+      }
+    </div>
+  </div>
+</div>

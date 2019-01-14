@@ -1,0 +1,17 @@
+﻿@model DeclarationCheckBoxField
+
+<div class="checkbox">
+  <label>
+    @Html.CheckBoxFor(m => m.Value) @Html.Raw(Model.Label)
+  </label>
+  @if (!string.IsNullOrEmpty(Model.CompleteText))
+  {
+    <div class="panel panel-default complete-text">
+      <div class="panel-body">
+        @Html.Raw(Model.CompleteText)
+      </div>
+    </div>
+  }
+</div>
+@Html.ValidationMessageFor(m => m.Value)
+@Html.RenderMetadata(Model)

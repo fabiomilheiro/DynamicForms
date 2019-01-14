@@ -1,0 +1,10 @@
+﻿@model StepViewModel
+
+@{
+  ViewBag.Title = $"Step {Model.Step.Number}: {Model.Step.Title}";
+}
+
+@using (Html.BeginForm())
+{
+  @Html.EditorFor(m => m.Step)
+}

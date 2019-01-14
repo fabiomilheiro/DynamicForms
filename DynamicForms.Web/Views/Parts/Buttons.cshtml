@@ -1,0 +1,16 @@
+﻿@model ButtonsViewModel
+
+<div class="row buttons">
+  <div class="col-xs-6">
+    @if (Model.Left != null)
+    {
+        <button class="btn btn-default btn-lg btn-block pull-left" type="submit" name="ActionType" value="@Model.Left.ActionType">@Model.Left.Text</button>
+    }
+  </div>
+  <div class="col-xs-6">
+    @if (Model.Right != null)
+    {
+        <button class="btn btn-primary btn-lg btn-block pull-right" type="submit" name="ActionType" value="@Model.Right.ActionType">@Model.Right.Text</button>
+    }
+  </div>
+</div>

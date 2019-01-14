@@ -1,0 +1,30 @@
+﻿@model EmailField
+
+@if (!string.IsNullOrEmpty(Model.Label))
+{
+    <div class="form-group">
+      @Html.LabelFor(m => m.Value, Model.Label)
+      @Html.TextBoxFor(m => m.Value, new { @class = "form-control", type = "email", placeholder = Model.Placeholder, aria_describedby = Html.IdFor(m => m.Value) })
+      @Html.ValidationMessageFor(m => m.Value)
+      @RenderSubtext()
+      @Html.RenderMetadata(Model)
+    </div>
+}
+else
+{
+    <div class="form-group input-group">
+      <span class="input-group-addon" id="@Html.IdFor(m => m.Value)">@@</span>
+      @Html.TextBoxFor(m => m.Value, new { @class = "form-control", placeholder = Model.Placeholder, aria_describedby = Html.IdFor(m => m.Value) })
+    </div>
+    @Html.ValidationMessageFor(m => m.Value)
+    @RenderSubtext()
+    @Html.RenderMetadata(Model)
+}
+
+@helper RenderSubtext()
+{
+  if (!string.IsNullOrEmpty(Model.Subtext))
+  {
+    <p class="help-block">@Model.Subtext</p>
+  }
+}

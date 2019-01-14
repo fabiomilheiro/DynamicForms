@@ -1,0 +1,7 @@
+﻿@model Navigation
+
+
+@for (var i = 0; i < Model.Steps.Count; i++)
+{
+    @Html.EditorFor(m => m.Steps[i])
+}

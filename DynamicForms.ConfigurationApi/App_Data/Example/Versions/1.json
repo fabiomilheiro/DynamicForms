@@ -1,0 +1,566 @@
+{
+  "versionID": 1,
+  "creationDate": "2017-05-02T08:00:00",
+  "settings": {
+    "brand": {
+      "code": 1000,
+      "name": "Example",
+      "theme": "None"
+    },
+    "contact": {
+      "phoneNumber": {
+        "label": "Phone",
+        "value": "0123456789"
+      },
+      "email": {
+        "label": "Email",
+        "value": "client-management@cityindex.co.uk"
+      },
+      "chat": {
+        "label": "Chat",
+        "value": "https://www.livehelpnow.net/lhn/lcv.aspx?d=32646&ms=&zzwindow=31444&lhnid=24863&custom1=City+Index+UK+LiveAppForm+Visitor&custom2=&custom3="
+      }
+    }
+  },
+  "experiences": [
+    {
+      "alias": "Desktop",
+      "navigation": {
+        "steps": [
+          {
+            "number": 1,
+            "title": "About You",
+            "sections": [
+              {
+                "title": "Product Select",
+                "fields": [
+                  {
+                    "type": "Products",
+                    "label": "Please select the products you are interested in:",
+                    "help": {
+                      "text": "This is where you choose the products that you want to trade."
+                    },
+                    "availableValues": [
+                      {
+                        "value": 1,
+                        "text": "Spread Betting"
+                      },
+                      {
+                        "value": 2,
+                        "text": "CFD"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "Personal Details",
+                "fields": [
+                  {
+                    "type": "CountryOfResidency",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ],
+                    "label": "Country of residence",
+                    "availableValues": [
+                      {
+                        "value": "GB",
+                        "text": "United Kingdom",
+                        "isDefault": true
+                      },
+                      {
+                        "value": "AU",
+                        "text": "Australia",
+                        "isDefault": false,
+                        "redirect": {
+                          "type": "SoftRedirect",
+                          "targetID": "CIAU",
+                          "text": "You should go to another form."
+                        }
+                      },
+                      {
+                        "value": "US",
+                        "text": "United States",
+                        "isDefault": false,
+                        "redirect": {
+                          "type": "HardRedirect",
+                          "targetID": "FOREXCOM"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Title",
+                    "Label": "Title",
+                    "value": "",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ],
+                    "availableValues": [
+                      {
+                        "value": 10,
+                        "text": "Mr"
+                      },
+                      {
+                        "value": 20,
+                        "text": "Miss"
+                      },
+                      {
+                        "value": 30,
+                        "text": "Miss"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "MiddleName",
+                    "label": "Middle Name",
+                    "subtext": "Optional",
+                    "validators": []
+                  },
+                  {
+                    "type": "FirstName",
+                    "label": "First Name",
+                    "placeholder": "Enter your first name please",
+                    "subtext": "Not optional",
+                    "validators": [
+                      {
+                        "type": "IsRequired",
+                        "description": "The field is required."
+                      },
+                      {
+                        "type": "StringLength",
+                        "description": "The field length must be between the minimum and maximum values.",
+                        "minimumLength": 2,
+                        "maximumLength": 50
+                      },
+                      {
+                        "type": "RegularExpression",
+                        "pattern": "^[a-z ,.'-]+$"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "LastName",
+                    "label": "Last Name",
+                    "validators": []
+                  },
+                  {
+                    "type": "DateOfBirth",
+                    "validators": [
+                      { "type": "MustBeOver18" }
+                    ],
+                    "day": {
+                      "type": "DateOfBirthDay",
+                      "validators": [
+                        { "type": "IsRequired" }
+                      ]
+                    },
+                    "month": {
+                      "type": "DateOfBirthMonth",
+                      "validators": [
+                        { "type": "IsRequired" }
+                      ]
+                    },
+                    "year": {
+                      "type": "DateOfBirthYear",
+                      "validators": [
+                        { "type": "IsRequired" }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Citizenship",
+                    "label": "Citizenship",
+                    "availableValues": [
+                      {
+                        "value": "1",
+                        "Text": "British"
+                      },
+                      {
+                        "value": "2",
+                        "Text": "Spanish"
+                      },
+                      {
+                        "value": "3",
+                        "Text": "French"
+                      }
+                    ],
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "Contact Details",
+                "fields": [
+                  {
+                    "type": "Email",
+                    "label": "Email",
+                    "subtext": "We'll send you confirmation to this email.",
+                    "annotations": [
+                      {
+                        "type": "Salesforce",
+                        "fields": [ "Email__c", "Someotherfield__c" ]
+                      },
+                      {
+                        "type": "Eds",
+                        "field": "Email"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "MobilePhone",
+                    "label": "Mobile Phone",
+                    "placeholder": "Must be UK phone number",
+                    "validators": [
+                      { "type": "IsRequired" },
+                      { "type": "MustBeUKPhoneNumber" }
+                    ]
+                  },
+                  {
+                    "type": "HomePhone",
+                    "label": "Home Phone"
+                  }
+                ]
+              },
+              {
+                "title": "Create Username & Password",
+                "fields": [
+                  {
+                    "type": "Credentials",
+                    "enableClearTextButton": true,
+                    "username": {
+                      "type": "String",
+                      "label": "Enter username",
+                      "validators": [
+                        { "type": "IsRequired" },
+                        { "type": "MustBeValidUsername" }
+                      ]
+                    },
+                    "password": {
+                      "type": "Password",
+                      "label": "Enter password",
+                      "help": {
+                        "text": "Please use between 8-15 alphanumeric characters. Do not use symbols or special characters."
+                      }
+                    },
+                    "confirmPassword": {
+                      "type": "ConfirmPassword",
+                      "label": "Confirm password"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": null,
+                "Body": [
+                  "By submitting information I confirm that I agree to the City Index <a href=\"http://www.cityindex.co.uk/spread-bet-and-cfd-terms-and-policies.aspx\" target=\"_blank\">Terms and Conditions</a> and <a href=\"http://www.cityindex.co.uk/privacy-policy.aspx\" target=\"_blank\">Privacy Policy</a> and may be contacted about my application."
+                ]
+              }
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Your address",
+            "sections": [
+              {
+                "title": "Current Address",
+                "fields": [
+                  {
+                    "type": "Postcode",
+                    "label": "Postcode",
+                    "placeholder": "EC2M 7EB",
+                    "validators": [
+                      { "type": "IsRequired" },
+                      { "type": "MustBeValidUKPostcode" }
+                    ]
+                  },
+                  {
+                    "type": "AddressLine1",
+                    "label": "Address line 1",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  },
+                  {
+                    "type": "AddressLine2",
+                    "label": "Address line 2",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  },
+                  {
+                    "type": "City",
+                    "label": "City",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  },
+                  {
+                    "type": "State",
+                    "label": "State",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "Tax residency",
+                "fields": [
+                  {
+                    "type": "TaxResidencyGroup",
+                    "IsOnlyOneTaxResidency": {
+                      "type": "YesOrNo",
+                      "label": "Is this your only country of tax residency?",
+                      "validators": [
+                        { "type": "IsRequired" }
+                      ]
+                    },
+                    "TaxResidency1": {
+                      "type": "TaxResidency",
+                      "country": {
+                        "type": "TaxResidencyCountry",
+                        "label": "Country",
+                        "validators": [
+                          { "type": "IsRequired" }
+                        ],
+                        "availableValues": [
+                          {
+                            "value": "GB",
+                            "text": "United Kingdom"
+                          },
+                          {
+                            "value": "AU",
+                            "text": "Australia"
+                          },
+                          {
+                            "value": "US",
+                            "text": "United States"
+                          }
+                        ]
+                      },
+                      "taxID": {
+                        "type": "TaxResidencyTaxID",
+                        "label": "Tax ID",
+                        "validators": [
+                          { "type": "IsRequiredIfCountryOfResidencyNotUK" },
+                          { "type": "SocialSecurityNumberIfUsa" }
+                        ]
+                      }
+                    },
+                    "TaxResidency2": {
+                      "type": "TaxResidency",
+                      "country": {
+                        "type": "TaxResidencyCountry",
+                        "label": "Country",
+                        "availableValues": [
+                          {
+                            "value": "GB",
+                            "text": "United Kingdom"
+                          },
+                          {
+                            "value": "AU",
+                            "text": "Australia"
+                          },
+                          {
+                            "value": "US",
+                            "text": "United States"
+                          }
+                        ]
+                      },
+                      "taxID": {
+                        "type": "TaxResidencyTaxID",
+                        "label": "Tax ID"
+                      }
+                    },
+                    "TaxResidency3": {
+                      "type": "TaxResidency",
+                      "country": {
+                        "type": "TaxResidencyCountry",
+                        "label": "Country",
+                        "availableValues": [
+                          {
+                            "value": "GB",
+                            "text": "United Kingdom"
+                          },
+                          {
+                            "value": "AU",
+                            "text": "Australia"
+                          },
+                          {
+                            "value": "US",
+                            "text": "United States"
+                          }
+                        ]
+                      },
+                      "taxID": {
+                        "type": "TaxResidencyTaxID",
+                        "label": "Tax ID"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "number": 3,
+            "title": "More about you",
+            "sections": [
+              {
+                "title": "Employment",
+                "fields": [
+                  {
+                    "type": "EmploymentStatus"
+                  }
+                ]
+              },
+              {
+                "title": "Your Financial Details",
+                "fields": []
+              },
+              {
+                "title": "Trading experience",
+                "fields": [
+                  {
+                    "type": "TradingExperience",
+                    "alias": "TradingFrequency",
+                    "label": "How many times do you trade CFDs?",
+                    "availableValues": [
+                      {
+                        "value": "1",
+                        "text": "Everyday",
+                        "subtextOnSelection": "Be sure to answer truthfully.",
+                        "score": 3
+                      },
+                      {
+                        "value": "2",
+                        "text": "Sometimes",
+                        "score": 1
+                      },
+                      {
+                        "value": "3",
+                        "text": "Never",
+                        "score": 0
+                      }
+                    ],
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ],
+                    "annotations": [
+                      {
+                        "type": "Salesforce",
+                        "fields": [ "cTradingFrequency__c", "cTradingFrequencyCFD__c" ]
+                      },
+                      {
+                        "type": "Eds",
+                        "field": "TradingFrequency"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TradingExperience",
+                    "alias": "TradingQualifications",
+                    "label": "Which courses have you taken?",
+                    "availableValues": [
+                      {
+                        "value": "1",
+                        "text": "Master in CFDs",
+                        "score": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "Masters in SBs",
+                        "subtextOnSelection": "That sounds good.",
+                        "score": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "None",
+                        "score": 0
+                      }
+                    ],
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ],
+                    "annotations": [
+                      {
+                        "type": "Salesforce",
+                        "fields": [ "cTradingQualifications__c" ]
+                      },
+                      {
+                        "type": "Eds",
+                        "field": "TradingQualifications"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TradingExperience",
+                    "alias": "RelevantWorkExperience",
+                    "label": "Do you have work experience that provides you with a good understanding of trading Spread Bets or CFDs?",
+                    "availableValues": [
+                      {
+                        "value": "1",
+                        "text": "Yes",
+                        "score": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "No",
+                        "subtextOnSelection": "That sounds good.",
+                        "score": 2
+                      }
+                    ],
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ],
+                    "annotations": [
+                      {
+                        "type": "Salesforce",
+                        "fields": [ "cRelevantWorkExperience__c" ]
+                      },
+                      {
+                        "type": "Eds",
+                        "field": "RelevantWorkExperience"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Declarations",
+            "sections": [
+              {
+                "title": "Agreements",
+                "fields": [
+                  {
+                    "type": "DeclarationCheckBox",
+                    "alias": "Agreement1",
+                    "label": "I also agree to <a href=\"javascript:void(0);\">this idea</a>.",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  },
+                  {
+                    "type": "DeclarationCheckBox",
+                    "alias": "Agreement2",
+                    "label": "I agree to this other idea too.",
+                    "completeText": "<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p><p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p><p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p><p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then</p>",
+                    "validators": [
+                      { "type": "IsRequired" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

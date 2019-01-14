@@ -1,0 +1,14 @@
+﻿@model PostcodeField
+
+<div class="form-group">
+  @Html.LabelFor(m => m.Value, Model.Label)
+  <div class="input-group">
+    @Html.TextBoxFor(m => m.Value, new { @class = "form-control input-lg", placeholder = Model.Placeholder })
+    <span class="input-group-btn">
+      <button class="btn btn-default btn-lg btn-primary" type="button">Lookup</button>
+    </span>
+  </div>
+  @Html.ValidationMessageFor(m => m.Value)
+  <p class="help-block">@Model.Subtext</p>
+  @Html.RenderMetadata(Model)
+</div>

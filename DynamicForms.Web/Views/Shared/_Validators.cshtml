@@ -1,0 +1,18 @@
+﻿@using DynamicForms.Common.Models.ConfigurationModels.Validation
+@model FieldBase
+
+<p class="help-block">
+  Validators:
+  @if (!Model.Validators.Any())
+  {
+    @:None
+  }
+  else
+  {
+    @Html.Raw(string.Join(", ", Model.Validators.Select(CreateValidatorSpanWithTooltip)))
+  }
+</p>
+
+@helper CreateValidatorSpanWithTooltip(ValidatorBase validator)
+{
+  <a href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@validator.ToString()">@validator.Type</a>}

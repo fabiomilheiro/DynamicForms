@@ -1,0 +1,8 @@
+﻿@model DateOfBirthField
+
+<div class="row">
+  <div class="col-md-4">@Html.EditorFor(m => m.Day)</div>
+  <div class="col-md-4">@Html.EditorFor(m => m.Month)</div>
+  <div class="col-md-4">@Html.EditorFor(m => m.Year)</div>
+</div>
+@Html.RenderMetadata(Model)

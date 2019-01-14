@@ -1,0 +1,30 @@
+﻿@using DynamicForms.Web.Infrastructure.Extensions
+@model CountryOfResidencyField
+
+<div class="form-group">
+  @Html.LabelFor(m => m.Value, Model.Label)
+  @Html.DropDownListFor(m => m.Value, Model.AvailableValues.Select(GetCountryOfResidencySelectListItem).WithEmptySelection(), new { @class = "form-control" })
+  @Html.ValidationMessageFor(m => m.Value)
+  <p class="help-block">@Model.Subtext</p>
+  @Html.RenderMetadata(Model)
+</div>
+
+@functions {
+
+    SelectListItem GetCountryOfResidencySelectListItem(CountryAvailableValue country)
+    {
+      var selectListItem = new SelectListItem
+      {
+        Value = country.Value,
+        Text = $"{country.Text}"
+      };
+
+      if (country.Redirect != null)
+      {
+        selectListItem.Text += $" (Type: {country.Redirect.Type}, target: {country.Redirect.TargetID})";
+      }
+
+      return selectListItem;
+    }
+
+}

@@ -1,0 +1,45 @@
+﻿.header {
+}
+
+.bs-callout {
+    border-color: #eee;
+}
+
+    .bs-callout h3 {
+    }
+
+.bs-callout-section {
+    border-left-color: #1D2F5D;
+    /*border-left-color: #d9534f;*/
+}
+
+    .bs-callout-section h3 {
+        /*color: #d9534f;*/
+        color: #1D2F5D;
+        display: inline-block;
+        padding: 4px;
+    }
+
+.body-content a {
+    color: black;
+}
+
+.tooltip-inner {
+    color: #fff;
+    background-color: #1D2F5D;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #1D2F5D;
+}
+
+.body-content .btn-primary {
+    color: #ccc;
+    background-color: #1D2F5D;
+    border-color: #1D2F5D;
+}
+
+.body-content .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #29499b;
+}

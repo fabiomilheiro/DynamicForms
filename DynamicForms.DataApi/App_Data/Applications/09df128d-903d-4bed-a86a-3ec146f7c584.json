@@ -1,0 +1,12 @@
+{
+    "id": "09df128d-903d-4bed-a86a-3ec146f7c584",
+    "selectedProducts": [],
+    "applicants": [
+        {
+            "firstName": "Fabio",
+            "dateOfBirth": "0001-01-01T00:00:00",
+            "email": "test@test.com",
+            "tradingExperiences": []
+        }
+    ]
+}

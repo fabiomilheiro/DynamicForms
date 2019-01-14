@@ -1,0 +1,6 @@
+﻿@model FormConfiguration
+
+@for (var i = 0; i < Model.Experiences.Count; i++)
+{
+    @Html.EditorFor(m => m.Experiences[i])
+}

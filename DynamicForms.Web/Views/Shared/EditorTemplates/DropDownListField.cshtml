@@ -1,0 +1,9 @@
+﻿@model DropDownListField
+
+<div class="form-group">
+  @Html.LabelFor(m => m.Value, Model.Label)
+  @Html.DropDownListFor(m => m.Value, Model.AvailableValues.ToSelectList().WithEmptySelection(), new { @class = "form-control" })
+  @Html.ValidationMessageFor(m => m.Value)
+  <p class="help-block">@Model.Subtext</p>
+  @Html.RenderMetadata(Model)
+</div>

@@ -1,0 +1,63 @@
+{
+  "versionID": 2,
+  "creationDate": "2017-05-02T08:00:00",
+  "settings": {
+    "brand": {
+      "code": 1000,
+      "name": "Jolly",
+      "theme": "Jolly"
+    },
+    "contact": {
+      "phoneNumber": {
+        "label": "Phone",
+        "value": "0123456789"
+      },
+      "email": {
+        "label": "Email",
+        "value": "info@jolly.co.uk"
+      }
+    }
+  },
+  "experiences": [
+    {
+      "alias": "Desktop",
+      "navigation": {
+        "steps": [
+          {
+            "number": 1,
+            "title": "Sign up to receive good things in your email",
+            "sections": [
+              {
+                "title": "Your details",
+                "fields": [
+                  {
+                    "type": "FirstName",
+                    "label": "FirstName",
+                    "placeholder": "Enter your first name",
+                    "help": {
+                      "text": "How your friends call you."
+                    }
+                  },
+                  {
+                    "type": "Email",
+                    "label": "Email",
+                    "placeholder": "Enter your email address",
+                    "help": {
+                      "text": "It must be your work email address."
+                    }
+                  }
+                ]
+              },
+              {
+                "title": null,
+                "Body": [
+                  "By submitting information I confirm that I agree to the terms and conditions and may be contacted later."
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
